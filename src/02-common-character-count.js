@@ -13,7 +13,6 @@ function getCommonCharacterCount(s1, s2) {
   const strArray1 = s1.split('');
   const strArray2 = s2.split('');
   const result = [];
-
   for (let j = 0; j < strArray1.length; j++) {
     for (let i = 0; i < strArray2.length; i++) {
       if (strArray1[j] === strArray2[i]) {
@@ -21,11 +20,9 @@ function getCommonCharacterCount(s1, s2) {
         strArray2.splice(i, 1);
         strArray1.splice(j, 1);
         j--;
-        console.log(strArray2);
       }
     }
   }
-
   return result.length;
 }
 
