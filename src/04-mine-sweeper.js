@@ -21,8 +21,175 @@
  *  [1, 1, 1]
  * ]
  */
-function minesweeper(/* matrix */) {
-  throw new Error('Not implemented');
+function minesweeper(matrix) {
+  const result = [];
+  let mines = 0;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[0].length; j++) {
+      if (i === 0 && j === 0) {
+        if (matrix[i + 1][j] === true) {
+          mines += 1;
+        }
+        if (matrix[i][j + 1] === true) {
+          mines += 1;
+        }
+        if (matrix[i + 1][j + 1] === true) {
+          mines += 1;
+        }
+        result.push(mines);
+        mines = 0;
+      }
+      if (i === 0 && j > 0 && j < matrix[0].length - 1) {
+        if (matrix[i][j - 1] === true) {
+          mines += 1;
+        }
+        if (matrix[i][j + 1] === true) {
+          mines += 1;
+        }
+        if (matrix[i + 1][j - 1] === true) {
+          mines += 1;
+        }
+        if (matrix[i + 1][j] === true) {
+          mines += 1;
+        }
+        if (matrix[i + 1][j + 1] === true) {
+          mines += 1;
+        }
+        result.push(mines);
+        mines = 0;
+      }
+      if (i === 0 && j === matrix[0].length - 1) {
+        if (matrix[i][j - 1] === true) {
+          mines += 1;
+        }
+        if (matrix[i + 1][j - 1] === true) {
+          mines += 1;
+        }
+        if (matrix[i + 1][j] === true) {
+          mines += 1;
+        }
+        result.push(mines);
+        mines = 0;
+      }
+      if (i > 0 && i < matrix.length - 1 && j === 0) {
+        if (matrix[i - 1][j] === true) {
+          mines += 1;
+        }
+        if (matrix[i - 1][j + 1] === true) {
+          mines += 1;
+        }
+        if (matrix[i][j + 1] === true) {
+          mines += 1;
+        }
+        if (matrix[i + 1][j] === true) {
+          mines += 1;
+        }
+        if (matrix[i + 1][j + 1] === true) {
+          mines += 1;
+        }
+        result.push(mines);
+        mines = 0;
+      }
+      if (i > 0 && i < matrix.length - 1 && j > 0 && j < matrix[0].length - 1) {
+        if (matrix[i - 1][j - 1] === true) {
+          mines += 1;
+        }
+        if (matrix[i - 1][j] === true) {
+          mines += 1;
+        }
+        if (matrix[i - 1][j + 1] === true) {
+          mines += 1;
+        }
+        if (matrix[i][j - 1] === true) {
+          mines += 1;
+        }
+        if (matrix[i][j + 1] === true) {
+          mines += 1;
+        }
+        if (matrix[i + 1][j + 1] === true) {
+          mines += 1;
+        }
+        if (matrix[i + 1][j] === true) {
+          mines += 1;
+        }
+        if (matrix[i + 1][j - 1] === true) {
+          mines += 1;
+        }
+        result.push(mines);
+        mines = 0;
+      }
+      if (i > 0 && i < matrix.length - 1 && j === matrix[0].length - 1) {
+        if (matrix[i - 1][j - 1] === true) {
+          mines += 1;
+        }
+        if (matrix[i - 1][j] === true) {
+          mines += 1;
+        }
+        if (matrix[i][j - 1] === true) {
+          mines += 1;
+        }
+        if (matrix[i + 1][j] === true) {
+          mines += 1;
+        }
+        if (matrix[i + 1][j - 1] === true) {
+          mines += 1;
+        }
+        result.push(mines);
+        mines = 0;
+      }
+      if (i === matrix.length - 1 && j === 0) {
+        if (matrix[i - 1][j] === true) {
+          mines += 1;
+        }
+        if (matrix[i - 1][j + 1] === true) {
+          mines += 1;
+        }
+        if (matrix[i][j + 1] === true) {
+          mines += 1;
+        }
+        result.push(mines);
+        mines = 0;
+      }
+      if (i === matrix.length - 1 && j > 0 && j < matrix[0].length - 1) {
+        if (matrix[i - 1][j - 1] === true) {
+          mines += 1;
+        }
+        if (matrix[i - 1][j] === true) {
+          mines += 1;
+        }
+        if (matrix[i - 1][j + 1] === true) {
+          mines += 1;
+        }
+        if (matrix[i][j - 1] === true) {
+          mines += 1;
+        }
+        if (matrix[i][j + 1] === true) {
+          mines += 1;
+        }
+        result.push(mines);
+        mines = 0;
+      }
+      if (i === matrix.length - 1 && j === matrix[0].length - 1) {
+        if (matrix[i - 1][j - 1] === true) {
+          mines += 1;
+        }
+        if (matrix[i - 1][j] === true) {
+          mines += 1;
+        }
+        if (matrix[i][j - 1] === true) {
+          mines += 1;
+        }
+        result.push(mines);
+        mines = 0;
+      }
+    }
+  }
+  const size = matrix[0].length;
+  const subarray = [];
+  for (let i = 0; i < Math.ceil(result.length / size); i++) {
+    subarray[i] = result.slice((i * size), (i * size) + size);
+  }
+  return subarray;
 }
 
 module.exports = minesweeper;
